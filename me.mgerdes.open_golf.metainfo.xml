@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2022 Laurin Neff -->
+<component type="desktop-application">
+    <id>me.mgerdes.open_golf</id>
+    <name>Open Golf</name>
+    <summary>A cross-platform minigolf game written in C</summary>
+    <description>
+		<p>Some text to make this file pass the validator</p>
+    </description>
+    <developer_name>Michael Gerdes</developer_name>
+    <launchable type="desktop-id">me.mgerdes.open_golf.desktop</launchable>
+    <url type="homepage">https://github.com/mgerdes/Open-Golf</url>
+    <url type="bugtracker">https://github.com/mgerdes/Open-Golf/issues</url>
+    <project_license>MIT</project_license>
+    <metadata_license>CC0-1.0</metadata_license>
+    <categories>
+        <category>Game</category>
+    </categories>
+    <content_rating type="oars-1.1"/>
+
+	<requires>
+		<display_length compare="ge">small</display_length>
+	</requires>
+    <recommends>
+		<control>pointing</control>
+		<control>touch</control>
+    </recommends>
+
+    <update_contact>laurin at laurinneff dot ch</update_contact>
+</component>

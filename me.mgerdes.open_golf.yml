@@ -1,0 +1,38 @@
+app-id: me.mgerdes.open_golf
+runtime: org.freedesktop.Platform
+runtime-version: '21.08'
+sdk: org.freedesktop.Sdk
+command: me.mgerdes.open_golf
+finish-args:
+  - --share=ipc
+  - --socket=x11
+  - --socket=pulseaudio
+  - --device=dri
+
+modules:
+  - name: open-golf
+    buildsystem: cmake
+    builddir: true
+    no-make-install: true # The build system doesn't provide a make install command
+    post-install:
+      - install -dm755 "${FLATPAK_DEST}/bin" "${FLATPAK_DEST}/lib/open_golf/data" "${FLATPAK_DEST}/share/applications" "${FLATPAK_DEST}/share/icons/hicolor/512x512/apps" "${FLATPAK_DEST}/share/metainfo"
+      - install -Dm755 "${FLATPAK_BUILDER_BUILDDIR}/me.mgerdes.open_golf" "${FLATPAK_DEST}/bin"
+
+      - install -Dm755 golf "${FLATPAK_DEST}/lib/open_golf"
+      - cp -r "${FLATPAK_BUILDER_BUILDDIR}/data" "${FLATPAK_DEST}/lib/open_golf"
+      
+      - install -Dm644 "${FLATPAK_BUILDER_BUILDDIR}/me.mgerdes.open_golf.desktop" "${FLATPAK_DEST}/share/applications"
+      - install -Dm644 "${FLATPAK_BUILDER_BUILDDIR}/me.mgerdes.open_golf.png" "${FLATPAK_DEST}/share/icons/hicolor/512x512/apps"
+      - install -Dm644 "${FLATPAK_BUILDER_BUILDDIR}/me.mgerdes.open_golf.metainfo.xml" "${FLATPAK_DEST}/share/metainfo"
+    sources:
+      - type: git
+        url: https://github.com/mgerdes/Open-Golf.git
+        commit: b9029f1e80c3110ae3d4fc9300854bdaeef96508
+      - type: file
+        path: me.mgerdes.open_golf.png
+      - type: file
+        path: me.mgerdes.open_golf
+      - type: file
+        path: me.mgerdes.open_golf.metainfo.xml
+      - type: file
+        path: me.mgerdes.open_golf.desktop

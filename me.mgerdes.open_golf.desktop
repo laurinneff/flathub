@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Open Golf
+Icon=me.mgerdes.open_golf
+Exec=me.mgerdes.open_golf
+Type=Application
+Categories=Game;
+Terminal=false

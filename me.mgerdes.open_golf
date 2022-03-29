@@ -1,0 +1,11 @@
+#!/usr/bin/sh
+
+# Write access to $PWD/storage.json is needed, but the data directory
+# also needs to be in the working directory, so this code creates
+# $XDG_DATA_HOME/open_golf, symlinks the data dir, and runs the game
+
+datadir="${XDG_DATA_HOME}/open_golf"
+mkdir -p $datadir
+cd $datadir
+test -L ./data || ln -s /app/lib/open_golf/data ./data
+exec /app/lib/open_golf/golf
